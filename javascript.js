@@ -50,18 +50,20 @@ buttons.forEach((button) => {
         const displayValue = document.querySelector('.lowerDisplay');
         //change lowerDisplay to display text
         displayValue.textContent += button.textContent;
+
         // if a non number is pressed add the current number to object
         if (isNaN(button.textContent)){
-            // remove the operator and store the number in object
-            variables.a = +displayValue.textContent.slice(0, -1);
-            // add current variables to upperDisplay
-            const upperDisplay = document.querySelector('.upperDisplay');
-            upperDisplay.textContent += variables.a + button.textContent;
-            // erase data from main display
-            displayValue.textContent = "";
-
-            // reset calculator when clear button is pressed
-            if (button.textContent === 'clear') clear();
+            if (button.textContent === 'delete') backspace(displayValue);
+            else if (button.textContent === 'clear') clear();
+            else {
+                // remove the operator and store the number in object
+                variables.a = +displayValue.textContent.slice(0, -1);
+                // add current variables to upperDisplay
+                const upperDisplay = document.querySelector('.upperDisplay');
+                upperDisplay.textContent += variables.a + button.textContent;
+                // erase data from main display
+                displayValue.textContent = "";
+            }
         }
     })
 });
@@ -79,4 +81,9 @@ function clear(){
     displayValue.textContent = '';
     const upperDisplay = document.querySelector('.upperDisplay');
     upperDisplay.textContent = '';
+}
+
+// deletes the newest input
+function backspace(displayValue){
+    displayValue.textContent = displayValue.textContent.slice(0, -7);
 }
