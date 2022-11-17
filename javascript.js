@@ -2,21 +2,9 @@
 let variables = {
     a: 0,
     b: 0,
-    variable: '',
+    operator: '',
     answer: 0,
 
-    calculateAnswer() {
-        switch(this.variable){
-            case '+': this.answer = this.a + this.b;
-            break;
-            case '-': this.answer = this.a - this.b;
-            break;
-            case 'x': this.answer = this.a * this.b;
-            break;
-            case '/': this.answer = this.a / this.b;
-            break;
-        }
-    }
 }
 
 // function that performs addition
@@ -55,9 +43,16 @@ function operate(operator, a, b){
 
 // add eventListener to all buttons
 const buttons = document.querySelectorAll('button');
-
+let operation = [];
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        console.log(button.textContent);
+        const displayValue = document.querySelector('.lowerDisplay');
+        displayValue.textContent += button.textContent;
+        /*operation.push(button.textContent);
+        for (let i = 0; i < operation.length; i++){
+            if(!operation[i].isNaN()){
+                variables.a = 
+            }
+        }*/
     })
 });
