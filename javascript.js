@@ -54,15 +54,30 @@ buttons.forEach((button) => {
         // if a non number is pressed add the current number to object
         if (isNaN(button.textContent)){
             if (button.textContent === 'delete') backspace(displayValue);
+
             else if (button.textContent === 'clear') clear();
+
             else {
-                // remove the operator and store the number in object
-                variables.a = +displayValue.textContent.slice(0, -1);
-                // add current variables to upperDisplay
+                // save the operator value in object
+                variables.operator = displayValue.textContent.charAt(displayValue.textContent.length - 1);
                 const upperDisplay = document.querySelector('.upperDisplay');
-                upperDisplay.textContent += variables.a + button.textContent;
-                // erase data from main display
-                displayValue.textContent = "";
+                
+                if (!upperDisplay.textContent == ''){
+                    // remove the operator and store the number in object
+                    variables.b = +displayValue.textContent.slice(0, -1);
+                    // add current variables to upperDisplay
+                    upperDisplay.textContent += variables.b + button.textContent;
+                    // erase data from main display
+                    displayValue.textContent = "";
+                }
+                else{
+                    // remove the operator and store the number in object
+                    variables.a = +displayValue.textContent.slice(0, -1);
+                    // add current variables to upperDisplay
+                    upperDisplay.textContent += variables.a + variables.operator;
+                    // erase data from main display
+                    displayValue.textContent = "";
+                }
             }
         }
     })
