@@ -48,20 +48,17 @@ buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         // get the DOM for lowerDisplay
         const displayValue = document.querySelector('.lowerDisplay');
-        // if a non number is pressed add the current number to object
-        if (isNaN(button.textContent)){
-            variables.a = +displayValue.textContent;
-            const upperDisplay = document.querySelector('.upperDisplay');
-            upperDisplay.textContent += variables.a + button.textContent;
-            displayValue.textContent = "";
-        }
         //change lowerDisplay to display text
         displayValue.textContent += button.textContent;
-        /*operation.push(button.textContent);
-        for (let i = 0; i < operation.length; i++){
-            if(!operation[i].isNaN()){
-                variables.a = 
-            }
-        }*/
+        // if a non number is pressed add the current number to object
+        if (isNaN(button.textContent)){
+            // remove the operator and store the number in object
+            variables.a = +displayValue.textContent.slice(0, -1);
+            // add current variables to upperDisplay
+            const upperDisplay = document.querySelector('.upperDisplay');
+            upperDisplay.textContent += variables.a + button.textContent;
+            // erase data from main display
+            displayValue.textContent = "";
+        }
     })
 });
