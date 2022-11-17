@@ -1,9 +1,13 @@
-
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px 0;
+}
 .buttons{
     display: flex;
     flex-wrap: wrap;
-    max-width: 220px;
-    max-height: 200px;
+    max-width: 208px;
 }
 
 button{
@@ -16,6 +20,7 @@ button{
     background-color: rgb(240, 240, 240);
     border-radius: 10px;
     border-color: black;
+    border-width: 2px;
 }
 
 button:hover{
@@ -24,4 +29,25 @@ button:hover{
 
 .specialButtons > button{
     width: 100px;
+}
+
+.display{
+    width: 200px;
+    height: 60px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 3px;
+    border-width: 2px;
+    background-color: rgba(35, 70, 35, 0.75);
+    font-family: Andale Mono, Courier, Courier New;
+    color: rgb(0, 5, 100);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.lowerDisplay{
+    font-size: 30px;
 }
