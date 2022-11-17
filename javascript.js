@@ -46,7 +46,16 @@ const buttons = document.querySelectorAll('button');
 let operation = [];
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
+        // get the DOM for lowerDisplay
         const displayValue = document.querySelector('.lowerDisplay');
+        // if a non number is pressed add the current number to object
+        if (isNaN(button.textContent)){
+            variables.a = +displayValue.textContent;
+            const upperDisplay = document.querySelector('.upperDisplay');
+            upperDisplay.textContent += variables.a + button.textContent;
+            displayValue.textContent = "";
+        }
+        //change lowerDisplay to display text
         displayValue.textContent += button.textContent;
         /*operation.push(button.textContent);
         for (let i = 0; i < operation.length; i++){
