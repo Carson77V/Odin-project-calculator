@@ -59,6 +59,24 @@ buttons.forEach((button) => {
             upperDisplay.textContent += variables.a + button.textContent;
             // erase data from main display
             displayValue.textContent = "";
+
+            // reset calculator when clear button is pressed
+            if (button.textContent === 'clear') clear();
         }
     })
 });
+
+// clears everything
+function clear(){
+    // clean the object
+    variables.a = 0;
+    variables.b = 0;
+    variables.operator = '';
+    variables.answer = 0;
+
+    // clean the DOM
+    const displayValue = document.querySelector('.lowerDisplay');
+    displayValue.textContent = '';
+    const upperDisplay = document.querySelector('.upperDisplay');
+    upperDisplay.textContent = '';
+}
