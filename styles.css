@@ -1,5 +1,4 @@
 
-
 .buttons{
     display: flex;
     flex-wrap: wrap;
@@ -21,4 +20,8 @@ button{
 
 button:hover{
     background-color: rgb(190, 190, 190);
+}
+
+.specialButtons > button{
+    width: 100px;
 }
