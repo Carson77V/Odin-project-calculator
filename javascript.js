@@ -7,11 +7,19 @@ let variables = {
     answer: 0,
 
 }
-// the two parts of the display will always display the variables here
-const lowerDisplay = document.querySelector('.lowerDisplay');
-lowerDisplay.textContent = variables.answer;
-const upperDisplay = document.querySelector('.upperDisplay');
-upperDisplay.textContent = variables.string;
+
+// add eventListener to all buttons
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.textContent === 'clear') clear();
+        else {
+            variables.string += button.textContent;
+        }
+        // call updateDisplay at the end to make sure everything has executed
+        updateDisplay();
+    })
+});
 
 // function that performs addition
 function addition(a, b){
@@ -47,14 +55,6 @@ function operate(operator, a, b){
     }
 }
 
-// add eventListener to all buttons
-const buttons = document.querySelectorAll('button');
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        
-    })
-});
-
 // clears everything
 function clear(){
     // clean the object
@@ -63,18 +63,17 @@ function clear(){
     variables.b = 0;
     variables.operator = '';
     variables.answer = 0;
+}
 
-    // clean the DOM
-    const displayValue = document.querySelector('.lowerDisplay');
-    displayValue.textContent = '';
+// function that updates the display 
+function updateDisplay(){
+    const lowerDisplay = document.querySelector('.lowerDisplay');
+    lowerDisplay.textContent = variables.answer;
     const upperDisplay = document.querySelector('.upperDisplay');
-    upperDisplay.textContent = '';
+    upperDisplay.textContent = variables.string;
 }
 
-// deletes the newest input
-function backspace(displayValue){
-    displayValue.textContent = displayValue.textContent.slice(0, -7);
-}
+
 
 
 
