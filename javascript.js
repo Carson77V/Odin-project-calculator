@@ -7,6 +7,11 @@ let variables = {
     answer: 0,
 
 }
+// the two parts of the display will always display the variables here
+const lowerDisplay = document.querySelector('.lowerDisplay');
+lowerDisplay.textContent = variables.answer;
+const upperDisplay = document.querySelector('.upperDisplay');
+upperDisplay.textContent = variables.string;
 
 // function that performs addition
 function addition(a, b){
