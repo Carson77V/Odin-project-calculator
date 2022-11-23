@@ -1,8 +1,8 @@
 // object used to hold variables that will be displayed
 let variables = {
     string: '',
-    a: 0,
-    b: 0,
+    a: '',
+    b: '',
     operator: '',
     answer: 0,
 
@@ -53,7 +53,7 @@ function operate(operator, a, b){
         break;
         case '-': return subtraction(a, b);
         break;
-        case '*': return multiplication(a, b);
+        case 'x': return multiplication(a, b);
         break;
         case '/': return division(a, b);
         break;
@@ -64,8 +64,8 @@ function operate(operator, a, b){
 function clear(){
     // clean the object
     variables.string = '';
-    variables.a = 0;
-    variables.b = 0;
+    variables.a = '';
+    variables.b = '';
     variables.operator = '';
     variables.answer = 0;
 }
@@ -101,7 +101,7 @@ function equals(){
         // check if first thing entered is NaN. If it is NaN, continue and ignore
         if (isNaN(string.charAt(0))) continue;
 
-        // if 
+        // if there is an operator add it to the object or perform operation
         if (isOperator(string.charAt(i))){
             // if there is already an operator saved perform the equation and 
             //break the loop
@@ -114,11 +114,13 @@ function equals(){
                 variables.operator = string.charAt(i);
             }
         }        
+        // if operator has been passed add numbers to b
         else if (variables.operator > ''){
-            variables.b = string.charAt(i);
+            variables.b += string.charAt(i);
         }
+        // if nothing has been done append numbers to a
         else{
-            variables.a = string.charAt(i);
+            variables.a += string.charAt(i);
         }
 
     }
