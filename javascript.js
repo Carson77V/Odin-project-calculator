@@ -15,8 +15,8 @@ buttons.forEach((button) => {
         if (button.textContent === 'clear') clear();
         else if (button.textContent === 'delete') backspace();
         else if(button.textContent === '=') {
-            equals();
             variables.string += button.textContent;
+            equals();
         }
         else {
             variables.string += button.textContent;
@@ -88,18 +88,61 @@ function equals(){
     let string = variables.string;
     // make sure equation doesn't have two operators back to back
     for (let i = 0; i < string.length - 1; i++){
-        if (isNaN(string.charAt(i)) === isNaN(string.charAt(i + 1)));
-        // display error on calculator screen
-        variables.string = "Error: Can't have two operators in a row";
-        break;
+        if (isNaN(string.charAt(i)) && isNaN(string.charAt(i + 1))){
+            // display error on calculator screen
+            variables.string = "Error: Can't have two operators in a row";
+            break;
+        }
     }
 
+    // loop through string to calculate equation, but only the first two 
+    // numbers
     for (let i = 0; i < string.length; i++){
-        
+        // check if first thing entered is NaN. If it is NaN, continue and ignore
+        if (isNaN(string.charAt(0))) continue;
+
+        // if 
+        if (isOperator(string.charAt(i))){
+            // if there is already an operator saved perform the equation and 
+            //break the loop
+            if (variables.operator > ''){
+                variables.answer = operate(variables.operator, +variables.a, +variables.b);
+                break;
+            }
+            // if no operator is saved yet, add one
+            else if (variables.operator === ''){
+                variables.operator = string.charAt(i);
+            }
+        }        
+        else if (variables.operator > ''){
+            variables.b = string.charAt(i);
+        }
+        else{
+            variables.a = string.charAt(i);
+        }
+
     }
+
+    //loop used to calculate the rest of the numbers
+
 }
 
-
+// this function is called to check if an operator is used instead 
+// of relying on isNaN
+function isOperator(char){
+    switch(char){
+        case '+': return true;
+        break;
+        case '-': return true;
+        break;
+        case '/': return true;
+        break;
+        case 'x': return true;
+        break;
+        case '=': return true;
+        break;
+    }
+}
 
 
 
