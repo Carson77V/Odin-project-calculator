@@ -86,6 +86,9 @@ function updateDisplay(){
 // this function will be used to calculate the entire entered equation 
 function equals(){
     let string = variables.string;
+    //counter will be used later to cut the string to calculate the rest
+    // of string to variables.answer
+    let counter = 0;
     // make sure equation doesn't have two operators back to back
     for (let i = 0; i < string.length - 1; i++){
         if (isNaN(string.charAt(i)) && isNaN(string.charAt(i + 1))){
@@ -122,9 +125,11 @@ function equals(){
         else{
             variables.a += string.charAt(i);
         }
-
+        counter++;
     }
-
+    
+    // removes the first two operators/numbers from the string
+    string = string.slice(counter + 1);
     //loop used to calculate the rest of the numbers
 
 }
