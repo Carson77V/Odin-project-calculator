@@ -13,6 +13,11 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.textContent === 'clear') clear();
+        else if (button.textContent === 'delete') backspace();
+        else if(button.textContent === '=') {
+            variables.string += button.textContent;
+            equals();
+        }
         else {
             variables.string += button.textContent;
         }
@@ -65,12 +70,22 @@ function clear(){
     variables.answer = 0;
 }
 
+function backspace(){
+    let temp = variables.string.slice(0, -1);
+    variables.string = temp;
+}
+
 // function that updates the display 
 function updateDisplay(){
     const lowerDisplay = document.querySelector('.lowerDisplay');
     lowerDisplay.textContent = variables.answer;
     const upperDisplay = document.querySelector('.upperDisplay');
     upperDisplay.textContent = variables.string;
+}
+
+// this function will be used to calculate the entire entered equation 
+function equals(){
+
 }
 
 
