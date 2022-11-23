@@ -15,8 +15,8 @@ buttons.forEach((button) => {
         if (button.textContent === 'clear') clear();
         else if (button.textContent === 'delete') backspace();
         else if(button.textContent === '=') {
-            variables.string += button.textContent;
             equals();
+            variables.string += button.textContent;
         }
         else {
             variables.string += button.textContent;
@@ -85,7 +85,18 @@ function updateDisplay(){
 
 // this function will be used to calculate the entire entered equation 
 function equals(){
+    let string = variables.string;
+    // make sure equation doesn't have two operators back to back
+    for (let i = 0; i < string.length - 1; i++){
+        if (isNaN(string.charAt(i)) === isNaN(string.charAt(i + 1)));
+        // display error on calculator screen
+        variables.string = "Error: Can't have two operators in a row";
+        break;
+    }
 
+    for (let i = 0; i < string.length; i++){
+        
+    }
 }
 
 
