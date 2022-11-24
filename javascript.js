@@ -13,7 +13,7 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (upperDisplayLimit(variables.string)){
-            variables.string = "Error: to many nums";
+            variables.string = "Error:too many nums";
         }
         else if (button.textContent === 'clear') clear();
         else if (button.textContent === 'delete') backspace();
@@ -102,7 +102,7 @@ function equals(){
     for (let i = 0; i < string.length - 1; i++){
         if (isNaN(string.charAt(i)) && isNaN(string.charAt(i + 1))){
             // display error on calculator screen
-            variables.string = "Error: Can't have two operators in a row";
+            variables.string = "Error: Improper equation";
             break;
         }
     }
@@ -160,8 +160,13 @@ function equals(){
 
     }
 
-    // round answer 
-
+    // round answer to find on display
+    if (lowerDisplayLimit(variables.answer.toString())){
+        let answerString = variables.answer.toString();
+        answerString = answerString.slice(0, 11);
+        console.log(answerString);
+        variables.answer = +answerString;
+    }
 }
 
 // this function is called to check if an operator is used instead 
@@ -190,7 +195,7 @@ function upperDisplayLimit(upperDisplay){
 }
 
 // return true if limit has been reach
-function lowerDipslayLimit(lowerDisplay){
+function lowerDisplayLimit(lowerDisplay){
     if (lowerDisplay.length > 11){
         return true;
     }

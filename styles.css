@@ -65,3 +65,7 @@ button:hover{
 .lowerDisplay{
     font-size: 30px;
 }
+
+.upperDisplay{
+    height: 20px;
+}
