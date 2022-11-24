@@ -55,7 +55,13 @@ function operate(operator, a, b){
         break;
         case 'x': return multiplication(a, b);
         break;
-        case '/': return division(a, b);
+        case '/': 
+        if (variables.b === '0'){
+            return "Error/0";
+        }
+        else{
+            return division(a, b);
+        }
         break;
     }
 }
@@ -127,7 +133,7 @@ function equals(){
         }
         counter++;
     }
-    
+
     // removes the first two operators/numbers from the string
     string = string.slice(counter + 1);
     //loop used to calculate the rest of the numbers
