@@ -137,9 +137,25 @@ function equals(){
     // removes the first two operators/numbers from the string
     string = string.slice(counter);
 
-    // checks if the user inputed an equation with more than 2 variables
-    if (string === '=') return;
-    //loop used to calculate the rest of the numbers
+    // use loop to calculate the rest of numbers by using the current answer
+    for (let i = 0; i < string.length; i++){
+        // checks if the user inputed an equation with more than 2 variable
+        if (string.charAt(i) === '='){
+            break;
+        }
+        // if there is an operator save it to the object
+        if (isOperator(string.charAt(i))){
+            variables.operator = string.charAt(i);
+            // reset variables.b to be used to store new numbers
+            variables.b = '';
+        }
+        // when a number is found: store it in b and then perform operation with answer
+        else {
+            variables.b += string.charAt(i);
+            variables.answer = operate(variables.operator, variables.answer, +variables.b);
+        }
+
+    }
 
 }
 
