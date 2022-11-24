@@ -135,7 +135,10 @@ function equals(){
     }
 
     // removes the first two operators/numbers from the string
-    string = string.slice(counter + 1);
+    string = string.slice(counter);
+
+    // checks if the user inputed an equation with more than 2 variables
+    if (string === '=') return;
     //loop used to calculate the rest of the numbers
 
 }
