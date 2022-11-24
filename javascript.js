@@ -157,6 +157,8 @@ function equals(){
 
     }
 
+    // round answer 
+
 }
 
 // this function is called to check if an operator is used instead 
@@ -176,44 +178,18 @@ function isOperator(char){
     }
 }
 
-
-
-
-
-
-
-/* get the DOM for lowerDisplay
-const displayValue = document.querySelector('.lowerDisplay');
-//change lowerDisplay to display text
-displayValue.textContent += button.textContent;
-
-// if a non number is pressed add the current number to object
-if (isNaN(button.textContent)){
-
-    if (button.textContent === 'delete') backspace(displayValue);
-
-    else if (button.textContent === 'clear') clear();
-
-    else {
-        // save the operator value in object
-        variables.operator = displayValue.textContent.charAt(displayValue.textContent.length - 1);
-        const upperDisplay = document.querySelector('.upperDisplay');
-
-        if (!upperDisplay.textContent == ''){
-            // remove the operator and store the number in object
-            variables.b = +displayValue.textContent.slice(0, -1);
-            // add current variables to upperDisplay
-            upperDisplay.textContent += variables.b + button.textContent;
-            // erase data from main display
-            displayValue.textContent = "";
-        }
-        else{
-            // remove the operator and store the number in object
-            variables.a = +displayValue.textContent.slice(0, -1);
-            // add current variables to upperDisplay
-            upperDisplay.textContent += variables.a + variables.operator;
-            // erase data from main display
-            displayValue.textContent = "";
-        }
+// returns true if the limit has been reach
+function UpperDisplayLimit(upperDisplay){
+    if (upperDisplay.length > 20){
+        return true;
     }
-}*/
+    return false;
+}
+
+// return true if limit has been reach
+function lowerDipslayLimit(lowerDisplay){
+    if (lowerDisplay.length > 11){
+        return true;
+    }
+    return false;
+}
