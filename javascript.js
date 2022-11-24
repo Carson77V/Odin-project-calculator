@@ -12,7 +12,10 @@ let variables = {
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (button.textContent === 'clear') clear();
+        if (upperDisplayLimit(variables.string)){
+            variables.string = "Error: to many nums";
+        }
+        else if (button.textContent === 'clear') clear();
         else if (button.textContent === 'delete') backspace();
         else if(button.textContent === '=') {
             variables.string += button.textContent;
@@ -179,8 +182,8 @@ function isOperator(char){
 }
 
 // returns true if the limit has been reach
-function UpperDisplayLimit(upperDisplay){
-    if (upperDisplay.length > 20){
+function upperDisplayLimit(upperDisplay){
+    if (upperDisplay.length >= 20){
         return true;
     }
     return false;
